@@ -19,6 +19,19 @@ let precioTotal = 0
 
 alert("estos son nuestros productos: \n - Aritos\n - Collar Ory\n - Bowl")
 
+function calculoPrecio(cantidad, precio){
+    precioTotal += (cantidad * precio)
+}
+function calculoStock(cantidad,stock, precio){
+    if(cantidad <= stock){
+        calculoPrecio(cantidad, precio)
+    }
+    else{
+        alert("Actualmente tenemos " + stock + " unidades de este producto")
+    }
+}
+
+
 let cantidadCompra = prompt("¿Que cantidad de productos distintos desea comprar?")
 
 for(let i = 0; i < cantidadCompra; i = i + 1){
@@ -27,32 +40,16 @@ for(let i = 0; i < cantidadCompra; i = i + 1){
 
     if (productoCompra == "Aritos"){
         let cantidadProducto_aritos = prompt("ingrese que cantidad de " + aritos + " desea comprar:")
-        if(cantidadProducto_aritos <= stockAritos){
-            precioTotal = precioTotal + (cantidadProducto_aritos * precio_Aritos)
-        }
-        else{
-            alert("Actualmente tenemos " + stockAritos + " unidades de este producto")
-        }
+        calculoStock(cantidadProducto_aritos,stockAritos, precio_Aritos)
 
     }
     else if(productoCompra == "Collar Ory"){
         let cantidadProducto_collarOry = prompt("ingrese que cantidad de " + collarOry + " desea comprar:")
-        if(cantidadProducto_collarOry <= stockCollarOry){
-            precioTotal = precioTotal + (cantidadProducto_collarOry * precio_CollarOry)
-        }
-        else{
-            alert("Actualmente tenemos " + stockCollarOry + " unidades de este producto")
-        }
-
+        calculoStock(cantidadProducto_collarOry, stockCollarOry, precio_CollarOry)
     }
     else if(productoCompra == "Bowl"){
         let cantidadProducto_bowl = prompt("ingrese que cantidad de " + bowl + " desea comprar:")
-        if(cantidadProducto_bowl <= stockBowl){
-            precioTotal = precioTotal + (cantidadProducto_bowl * precio_bowl)
-        }
-        else{
-            alert("Actualmente tenemos " + stockBowl + " unidades de este producto")
-        }
+        calculoStock(cantidadProducto_bowl, stockBowl, precio_bowl)
     }
     else{
         alert ("no tenemos ese producto en stock")
